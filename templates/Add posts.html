@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+<!-- Main Content-->
+{%block content%}
+<body>
+	 <header class="masthead" style="background-image: url('{{ url_for('static', filename='contact-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+
+                            <h1>Write a Post</h1>
+                            <span class="subheading">Write anything in your mind be informative, have fun!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+
+                        <div class="my-5">
+		<form method="post">
+			{{ form.csrf_token }}
+			{{ form.title.label }}<br>
+			{{ form.title }}<br><br>
+			{{ form.body.label }}<br>
+			{{ form.body }}
+			<br>
+			{{ form.submit }}
+		</form>
+	</div>
+	{{ ckeditor.load() }}
+	{{ ckeditor.config(name='body') }}
+	{# unconmment lines below if you load CKEditor from CDN, because codesnippet plugin is not available on CKEditor CDN #}
+	<script>
+		// Enable local "codesnippet" plugin from /ckeditor/static/standard/plugins/codesnippet/ path.
+		// CKEDITOR.plugins.addExternal( 'codesnippet', '/ckeditor/static/standard/plugins/codesnippet/', 'plugin.js' );
+	</script>
+</body>
+{%endblock%}

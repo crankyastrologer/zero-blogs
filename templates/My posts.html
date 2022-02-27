@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+<!-- Main Content-->
+{%block content%}
+
+<header class="masthead" style="background-image: url('{{ url_for('static', filename='home-bg.jpg') }}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>My Blogs</h1>
+                            <span class="subheading">Zero Blogs by Crankyastrologer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+<div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    {%for posts in my_posts %}
+
+                    {%include 'delete button.html'%}
+                    <div class="post-preview">
+
+
+                        <a href="{{url_for('post',id=posts.id)}}">
+                            <h2 class="post-title">{{posts.title}}</h2>
+                        </a>
+                        <p class="post-meta">
+                            Posted by {{owner(posts.owner)}}
+                            <a href="{{url_for('post',id=posts.id)}}"></a>
+                            on {{time(posts.date_posted)}}
+<button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal">
+  Delete
+</button>
+
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                {%endfor%}
+
+
+
+
+            {%endblock%}

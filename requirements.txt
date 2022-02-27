@@ -1,0 +1,5 @@
+flask
+flask-ckeditor
+authlib
+flask_sqlachemy
+flask_wtf
